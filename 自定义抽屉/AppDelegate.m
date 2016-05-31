@@ -1,12 +1,15 @@
 //
 //  AppDelegate.m
-//  自定义抽屉
+//  抽屉
 //
-//  Created by huhang on 16/5/31.
-//  Copyright © 2016年 huhang. All rights reserved.
+//  Created by huhang on 15/11/12.
+//  Copyright (c) 2015年 huhang. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "FirestViewController.h"
+#import "LeftViewController.h"
+#import "HHSliderDrawerController.h"
 
 @interface AppDelegate ()
 
@@ -14,9 +17,25 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+    FirestViewController *firestVC = [[FirestViewController alloc]init];
+    LeftViewController *leftVC = [[LeftViewController alloc]init];
+    HHSliderDrawerController *sliderDrawerVC = [[HHSliderDrawerController alloc]initWithRootViewController:firestVC leftViewController:leftVC];
+    sliderDrawerVC.animationDuration = 1;
+    sliderDrawerVC.leftViewShowWidth = 220;
+    
+    sliderDrawerVC.tabBarItem.title = @"主页";
+    UITabBarController *tabBar = [[UITabBarController alloc]init];
+    tabBar.viewControllers = @[sliderDrawerVC];
+    
+    UINavigationController *rootNC = [[UINavigationController alloc]initWithRootViewController:tabBar];
+    self.window.rootViewController = rootNC;
+    
     return YES;
 }
 

@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  LeftViewController.h
 //  抽屉
 //
 //  Created by huhang on 15/11/12.
@@ -8,10 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface LeftViewController : UIViewController
 
 @end
-
